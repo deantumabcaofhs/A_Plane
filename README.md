@@ -7,7 +7,7 @@ By Dean Tumabcao & Bengy for a high school assignment. Coded with Java and love.
 ## About
 A 2D top-down shooter video game where you can take down an alien bug. For Freedom and Managed Democracy! Game made before Helldivers 2. 
 ### 🎞️ Trailer
-https://github.com/dtumabcaofhs/A-PLANE/assets/143454140/a12fda5d-b79f-4efb-8f50-bb611bfce347
+https://github.com/dtumabcaofhs/A-Plane/assets/143454140/6ccc30fe-34af-4a51-90c6-ae345c22cc63
 ### 📷 Screenshot
 ![](images/Screenshot.png)
 ### 📖 A Plane Guide

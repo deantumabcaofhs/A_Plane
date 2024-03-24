@@ -2,7 +2,7 @@
 
 By Dean Tumabcao & Bengy for a high school assignment. Coded with Java and love. Uploaded to GitHub for archival.
 
-# Version 1.0 (no versioning happened during development)
+# Version 1.0.3
 
 ## About
 A 2D top-down shooter video game where you can take down an alien bug. For Freedom and Managed Democracy! Game made before Helldivers 2. 

@@ -20,6 +20,7 @@ public class Main extends PApplet {
     int ex, ey, exs, eys, ew, eh, ebxs, ebys,eFire, ec,eFireTimer, eAnimTimer,eBulletTimer, eBulletTimer2, eBulletTimer3b; //Enemy
     int rx, ry, lx, ly;
     float l, n, x, y;
+    String version = "v1.1.1";
 
     //HP Bars
     int enemyXHP, enemyYHP, enemyWHP, enemyHHP;
@@ -33,7 +34,7 @@ public class Main extends PApplet {
 
 
     //IMAGES, AUDIO & LISTS
-    PImage logo, playButton, playButton2,playButton3, player, player2, playerL1, playerL2, playerR1, playerR2, playerB1, playerB2, playerB3, playerB4, bgImage, playerBullet, playerBullet2, eb1 , eb2, eb3, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e1dmg, e2dmg, e3dmg, e4dmg, e5dmg, e6dmg, e7dmg, e8dmg, e9dmg, e10dmg, e11dmg, e12dmg;
+    PImage appIcon, logo, playButton, playButton2,playButton3, player, player2, playerL1, playerL2, playerR1, playerR2, playerB1, playerB2, playerB3, playerB4, bgImage, playerBullet, playerBullet2, eb1 , eb2, eb3, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e1dmg, e2dmg, e3dmg, e4dmg, e5dmg, e6dmg, e7dmg, e8dmg, e9dmg, e10dmg, e11dmg, e12dmg;
     Minim audio;
     AudioPlayer title,playClick, playHover, bgm, warning, playerShoot, playerShoot2,playerHit, enemyHit, enemyShoot2, enemyPrepareShoot2, victory;
     ArrayList<pBullet> pBullet;
@@ -46,8 +47,10 @@ public class Main extends PApplet {
     }
 
     public void setup() {
-        surface.setTitle("A PLANE"); //App titlebar name
+        surface.setTitle("A Plane"); //App titlebar name
         surface.setResizable(true);
+        appIcon = loadImage("images/PlayerShip.png");
+        surface.setIcon(appIcon);
         titleScreen = 1;
         initialize = 0; //Starts game at launch
 
@@ -242,7 +245,7 @@ public class Main extends PApplet {
         }
         image(logo,145,300);
         textSize(20);
-        text("Coded with Java by Bengy and Dean.",120,690);
+        text("Made with Java by Bengy and Dean. "+version,120,690);
         if(play == 0) {
             if (mouseX >= 240 && mouseX <= 373) {
                 if (mouseY >= 380 && mouseY <= 444) {

@@ -55,56 +55,56 @@ public class Main extends PApplet {
         initialize = 0; //Starts game at launch
 
         //IMAGE INITIALIZING
-        logo = loadImage("Images/A Plane Logo.png"); //Title screen logo
-        playButton = loadImage("Images/PlayButton1.png"); //Play button
-        playButton2 = loadImage("Images/PlayButton2.png"); //Play button hovered
-        playButton3 = loadImage("Images/PlayButton3.png"); //Play button pressed
-        bgImage= loadImage("Images/DefendersBG.png"); //Background scroll
-        player = loadImage("Images/PlayerShip.png"); //Player ship neut, up, down
-        player2 = loadImage("Images/PlayerShip2.png"); //Player ship damage
-        playerBullet = loadImage("Images/PlayerBullet.png"); //Player projectile 1
-        playerBullet2 = loadImage("Images/PlayerBullet2.png"); //Player projectile
+        logo = loadImage("images/A Plane Logo.png"); //Title screen logo
+        playButton = loadImage("images/PlayButton1.png"); //Play button
+        playButton2 = loadImage("images/PlayButton2.png"); //Play button hovered
+        playButton3 = loadImage("images/PlayButton3.png"); //Play button pressed
+        bgImage= loadImage("images/DefendersBG.png"); //Background scroll
+        player = loadImage("images/PlayerShip.png"); //Player ship neut, up, down
+        player2 = loadImage("images/PlayerShip2.png"); //Player ship damage
+        playerBullet = loadImage("images/PlayerBullet.png"); //Player projectile 1
+        playerBullet2 = loadImage("images/PlayerBullet2.png"); //Player projectile
 
         //Boss
-        e1 = loadImage("Images/strikers1999chaosqueenb-0.png");
-        e2 = loadImage("Images/strikers1999chaosqueenb-1.png");
-        e3 = loadImage("Images/strikers1999chaosqueenb-2.png");
-        e4 = loadImage("Images/strikers1999chaosqueenb-3.png");
-        e5 = loadImage("Images/strikers1999chaosqueenb-4.png");
-        e6 = loadImage("Images/strikers1999chaosqueenb-5.png");
-        e7 = loadImage("Images/strikers1999chaosqueenb-6.png");
-        e8 = loadImage("Images/strikers1999chaosqueenb-7.png");
-        e9 = loadImage("Images/strikers1999chaosqueenb-8.png");
-        e10 = loadImage("Images/strikers1999chaosqueenb-9.png");
-        e11 = loadImage("Images/strikers1999chaosqueenb-10.png");
-        e12 = loadImage("Images/strikers1999chaosqueenb-11.png");
+        e1 = loadImage("images/strikers1999chaosqueenb-0.png");
+        e2 = loadImage("images/strikers1999chaosqueenb-1.png");
+        e3 = loadImage("images/strikers1999chaosqueenb-2.png");
+        e4 = loadImage("images/strikers1999chaosqueenb-3.png");
+        e5 = loadImage("images/strikers1999chaosqueenb-4.png");
+        e6 = loadImage("images/strikers1999chaosqueenb-5.png");
+        e7 = loadImage("images/strikers1999chaosqueenb-6.png");
+        e8 = loadImage("images/strikers1999chaosqueenb-7.png");
+        e9 = loadImage("images/strikers1999chaosqueenb-8.png");
+        e10 = loadImage("images/strikers1999chaosqueenb-9.png");
+        e11 = loadImage("images/strikers1999chaosqueenb-10.png");
+        e12 = loadImage("images/strikers1999chaosqueenb-11.png");
 
         //Boss damage
-        e1dmg = loadImage("Images/strikers1999chaosqueenb-12.png");
-        e2dmg = loadImage("Images/strikers1999chaosqueenb-13.png");
-        e3dmg = loadImage("Images/strikers1999chaosqueenb-14.png");
-        e4dmg = loadImage("Images/strikers1999chaosqueenb-15.png");
-        e5dmg = loadImage("Images/strikers1999chaosqueenb-16.png");
-        e6dmg = loadImage("Images/strikers1999chaosqueenb-17.png");
-        e7dmg = loadImage("Images/strikers1999chaosqueenb-18.png");
-        e8dmg = loadImage("Images/strikers1999chaosqueenb-19.png");
-        e9dmg = loadImage("Images/strikers1999chaosqueenb-20.png");
-        e10dmg = loadImage("Images/strikers1999chaosqueenb-21.png");
-        e11dmg = loadImage("Images/strikers1999chaosqueenb-22.png");
-        e12dmg = loadImage("Images/strikers1999chaosqueenb-23.png");
+        e1dmg = loadImage("images/strikers1999chaosqueenb-12.png");
+        e2dmg = loadImage("images/strikers1999chaosqueenb-13.png");
+        e3dmg = loadImage("images/strikers1999chaosqueenb-14.png");
+        e4dmg = loadImage("images/strikers1999chaosqueenb-15.png");
+        e5dmg = loadImage("images/strikers1999chaosqueenb-16.png");
+        e6dmg = loadImage("images/strikers1999chaosqueenb-17.png");
+        e7dmg = loadImage("images/strikers1999chaosqueenb-18.png");
+        e8dmg = loadImage("images/strikers1999chaosqueenb-19.png");
+        e9dmg = loadImage("images/strikers1999chaosqueenb-20.png");
+        e10dmg = loadImage("images/strikers1999chaosqueenb-21.png");
+        e11dmg = loadImage("images/strikers1999chaosqueenb-22.png");
+        e12dmg = loadImage("images/strikers1999chaosqueenb-23.png");
 
         //Player
-        playerL1 = loadImage("Images/PlayerShipL1.png");
-        playerL2 = loadImage("Images/PlayerShipL2.png");
-        playerR1 = loadImage("Images/PlayerShipR1.png");
-        playerR2 = loadImage("Images/PlayerShipR2.png");
-        playerB1 = loadImage("Images/PlayerShipB1.png");
-        playerB2 = loadImage("Images/PlayerShipB2.png");
-        playerB3 = loadImage("Images/PlayerShipB3.png");
-        playerB4 = loadImage("Images/PlayerShipB4.png");
-        eb1 = loadImage("Images/EnemyBullet1.png");
-        eb2 = loadImage("Images/EnemyBullet24.png");
-        eb3 = loadImage("Images/EnemyBullet3.png");
+        playerL1 = loadImage("images/PlayerShipL1.png");
+        playerL2 = loadImage("images/PlayerShipL2.png");
+        playerR1 = loadImage("images/PlayerShipR1.png");
+        playerR2 = loadImage("images/PlayerShipR2.png");
+        playerB1 = loadImage("images/PlayerShipB1.png");
+        playerB2 = loadImage("images/PlayerShipB2.png");
+        playerB3 = loadImage("images/PlayerShipB3.png");
+        playerB4 = loadImage("images/PlayerShipB4.png");
+        eb1 = loadImage("images/EnemyBullet1.png");
+        eb2 = loadImage("images/EnemyBullet24.png");
+        eb3 = loadImage("images/EnemyBullet3.png");
 
 
         //LIST INITIALIZING
@@ -115,18 +115,18 @@ public class Main extends PApplet {
 
         //AUDIO INITIALIZING
         audio = new Minim(this);
-        title = audio.loadFile("Audio/Strikers 1945 - III Black Wind (Rearranged Ver.).mp3");
-        playClick = audio.loadFile("Audio/OptionSelect.mp3");
-        playHover = audio.loadFile("Audio/SelectAnOption.mp3");
-        bgm = audio.loadFile("Audio/BGM.mp3");
-        warning = audio.loadFile("Audio/Warning.mp3");
-        playerShoot = audio.loadFile("Audio/DefiniteShot.mp3");
-        playerShoot2 = audio.loadFile("Audio/DefiniteMissileLaunch.mp3");
-        playerHit = audio.loadFile("Audio/ExtraHitPoint.mp3");
-        enemyHit = audio.loadFile("Audio/DefiniteHit.mp3");
-        enemyPrepareShoot2 = audio.loadFile("Audio/MonsterEnergyReloadFull.mp3");
-        enemyShoot2 = audio.loadFile("Audio/LaserMonsterAttack.mp3");
-        victory = audio .loadFile("Audio/♪ Armed Wings (Fighters Select).mp3");
+        title = audio.loadFile("audio/Strikers 1945 - III Black Wind (Rearranged Ver.).mp3");
+        playClick = audio.loadFile("audio/OptionSelect.mp3");
+        playHover = audio.loadFile("audio/SelectAnOption.mp3");
+        bgm = audio.loadFile("audio/BGM.mp3");
+        warning = audio.loadFile("audio/Warning.mp3");
+        playerShoot = audio.loadFile("audio/DefiniteShot.mp3");
+        playerShoot2 = audio.loadFile("audio/DefiniteMissileLaunch.mp3");
+        playerHit = audio.loadFile("audio/ExtraHitPoint.mp3");
+        enemyHit = audio.loadFile("audio/DefiniteHit.mp3");
+        enemyPrepareShoot2 = audio.loadFile("audio/MonsterEnergyReloadFull.mp3");
+        enemyShoot2 = audio.loadFile("audio/LaserMonsterAttack.mp3");
+        victory = audio .loadFile("audio/♪ Armed Wings (Fighters Select).mp3");
     }
 
     //GAME DRAWING & LOGIC

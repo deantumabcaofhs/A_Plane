@@ -1,40 +1,36 @@
 public class pBullet { //PLAYER
-    int x, y, ySpeed, t, w, h;
+    int x, y, ySpeed, type, width, height;
 
-    public pBullet(int x, int y, int ys, int w, int h, int t) {
+    public pBullet(int x, int y, int ySpeed, int width, int height, int type) {
         this.x = x;
         this.y = y;
-        this.ySpeed = ys;
-        this.t = t;
-        this.w = w;
-        this.h = h;
+        this.ySpeed = ySpeed;
+        this.type = type;
+        this.width = width;
+        this.height = height;
     }
 
-    public void pMove() {
-        if (t == 1) {
-            if (x + 8 / 2 >= 0 && x - 8 / 2 <= 600) {
-                if (y + 14 >= 0 && y - 14 <= 700) {
-                    y -= ySpeed;
-                }
+    public boolean pMove() {
+        if (type == 1) {
+            if (x + width / 2 >= 0 && x - width / 2 <= 600 && y + height >= 0 && y - height <= 700) {
+                y -= ySpeed;
+            }else{
+                return false;
             }
         }
-        if (t == 2) {
-            if (x + 8 / 2 >= 0 && x - 8 / 2 <= 600) {
-                if (y + 14 >= 0 && y - 14 <= 700) {
-                    y -= ySpeed;
-
-                }
+        if (type == 2) {
+            if (x + width / 2 >= 0 && x - width / 2 <= 600 && y + height >= 0 && y - height <= 700) {
+                y -= ySpeed;
+            }else{
+                return false;
             }
         }
+        return true;
     }
 
     public boolean pCollision(int eX, int eY, int eW, int eH) {
-            if (x + w / 2 >= eX && x - w / 2 <= eX + eW) {
-                if (y + h / 2 >= eY && y - h / 2 <= eY + eH) {
-                    return true;
-                } else {
-                    return false;
-                }
+            if (x + width / 2 >= eX && x - width / 2 <= eX + eW) {
+                return y + height / 2 >= eY && y - height / 2 <= eY + eH;
             } else {
                 return false;
             }

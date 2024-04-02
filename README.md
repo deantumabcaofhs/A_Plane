@@ -1,10 +1,12 @@
-<img src="images/A Plane Logo.png">
+<img src="images/A Plane Logo.png" alt="A Plane Logo">
 
 By Dean Tumabcao & Bengy for a high school assignment. Coded with Java and love. Uploaded to GitHub for archival.
 
-# Version 1.0.4
+# Version 1.1.0
 
 **Latest Minor**
+* ⚡💪 PERFORMANCE and EFFICIENCY IMPROVEMENTS!
+* Fixed bug of Torpedoes(?) getting stuck on top of window
 * Released my 1st Windows EXE of a Java project! :D
 * Changed names of folders
 

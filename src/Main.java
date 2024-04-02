@@ -4,11 +4,9 @@ import processing.core.PImage; //Images
 import ddf.minim.AudioPlayer; //Audio
 import ddf.minim.Minim; //Audio
 import java.util.ArrayList; //Array Lists
+import java.util.Iterator;
 
 public class Main extends PApplet {
-    //OBJECT CLASS
-    pBullet pb; //Player bullets
-    eBullet eb; //Enemy bullets
     BG bg;
 
 
@@ -20,14 +18,17 @@ public class Main extends PApplet {
     int ex, ey, exs, eys, ew, eh, ebxs, ebys,eFire, ec,eFireTimer, eAnimTimer,eBulletTimer, eBulletTimer2, eBulletTimer3b; //Enemy
     int rx, ry, lx, ly;
     float l, n, x, y;
-    String version = "v1.0.4";
+    String version = "v1.1.0";
 
     //HP Bars
     int enemyXHP, enemyYHP, enemyWHP, enemyHHP;
     int playerXHP, playerYHP, playerWHP, playerHHP;
 
     //Movement and collision
-    boolean up, down, left, right, eCollision, pCollision;
+    boolean up;
+    boolean down;
+    boolean left;
+    boolean right;
 
     //Misc
     int timer;
@@ -37,8 +38,8 @@ public class Main extends PApplet {
     PImage appIcon, logo, playButton, playButton2,playButton3, player, player2, playerL1, playerL2, playerR1, playerR2, playerB1, playerB2, playerB3, playerB4, bgImage, playerBullet, playerBullet2, eb1 , eb2, eb3, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e1dmg, e2dmg, e3dmg, e4dmg, e5dmg, e6dmg, e7dmg, e8dmg, e9dmg, e10dmg, e11dmg, e12dmg;
     Minim audio;
     AudioPlayer title,playClick, playHover, bgm, warning, playerShoot, playerShoot2,playerHit, enemyHit, enemyShoot2, enemyPrepareShoot2, victory;
-    ArrayList<pBullet> pBullet;
-    ArrayList<eBullet> eBullet;
+    ArrayList<pBullet> pBulletList;
+    ArrayList<eBullet> eBulletList;
     ArrayList<BG> bgList;
 
 
@@ -48,7 +49,6 @@ public class Main extends PApplet {
 
     public void setup() {
         surface.setTitle("A Plane "+version); //App titlebar name
-        surface.setResizable(true);
         appIcon = loadImage("images/PlayerShip.png");
         surface.setIcon(appIcon);
         titleScreen = 1;
@@ -108,8 +108,8 @@ public class Main extends PApplet {
 
 
         //LIST INITIALIZING
-        pBullet = new ArrayList<>();
-        eBullet = new ArrayList<>();
+        pBulletList = new ArrayList<>();
+        eBulletList = new ArrayList<>();
         bgList = new ArrayList<>();
 
 
@@ -545,44 +545,51 @@ public class Main extends PApplet {
         }
 
         //DRAWS PLAYER BULLETS
-        for (pBullet pb : pBullet) {
+        Iterator<pBullet> iterator = pBulletList.iterator();
+        while (iterator.hasNext()) {
+            pBullet pb = iterator.next();
+
             fill(0, 0, 255);
-            if (pb.t == 1) {
+            if (pb.type == 1) {
                 if (pb.x + 8 / 2 >= 0 && pb.x - 8 / 2 <= width) {
                     if (pb.y + 14 >= 0 && pb.y - 14 <= height) {
                         image(playerBullet, pb.x - 4, pb.y + 2);
-
                     }
                 }
             }
-            if (pb.t == 2) {
+            if (pb.type == 2) {
                 if (pb.x + 8 / 2 >= 0 && pb.x - 8 / 2 <= width) {
                     if (pb.y + 20 >= 0 && pb.y - 20 <= height) {
                         image(playerBullet2, pb.x - 4, pb.y + 2);
-
                     }
                 }
             }
             pb.pMove();
-            pCollision = pb.pCollision(ex, ey, ew, eh);
-            if (pCollision) {
+            if(!pb.pMove()){
+                iterator.remove();
+            }
+
+            if (pb.pCollision(ex, ey, ew, eh)) { // Assuming pCollision is a method of pBullet class
                 pc = 1;
                 enemyHit.play();
                 enemyHit.rewind();
                 enemyWHP = (int) ((enemyHealth / 500) * 300);
-                if (pb.t == 1) {
+                if (pb.type == 1) {
                     enemyHealth--;
                 }
-                if (pb.t == 2) {
+                if (pb.type == 2) {
                     enemyHealth -= 10;
                 }
-                pb.y = -100;
+                iterator.remove(); // Remove the current element pointed by the iterator
             }
         }
     }
     public void eBullet(){
-        //DRAWS ENEMY BULLETS
-        for (eBullet eb : eBullet) {
+
+        Iterator<eBullet> iterator = eBulletList.iterator();
+        while (iterator.hasNext()) {
+            eBullet eb = iterator.next(); // Make sure 'pBullet' is the correct type, and pb is declared correctly
+
             fill(255, 0, 0);
             if (eb.act == 1) {
                 if (eb.x + 20 / 2 >= 0 && eb.x - 20 / 2 <= width) {
@@ -602,23 +609,27 @@ public class Main extends PApplet {
                             eb.animtimer = 0;
                         }
                         eb.eMove();
+                        if(!eb.eMove()){
+                            iterator.remove();
+                        }
                     } else {
                         eb.act = 0;
+                        iterator.remove();
                     }
                 } else {
                     eb.act = 0;
+                    iterator.remove();
                 }
             }
-            eCollision = eb.eCollision(px, py, pw, ph);
-            if (eb.act == 1) {
-                if (eCollision) {
-                    ec = 1;
-                    playerHit.play();
-                    playerHit.rewind();
-                    playerHealth--;
-                    playerWHP = (int) ((playerHealth / 100) * 164);
-                    eb.act = 0;
-                }
+
+            if (eb.eCollision(px, py, pw, ph)) { // Assuming pCollision is a method of pBullet class
+                ec = 1;
+                playerHit.play();
+                playerHit.rewind();
+                playerHealth--;
+                playerWHP = (int) ((playerHealth / 100) * 164);
+                eb.act = 0;
+                iterator.remove(); // Remove the current element pointed by the iterator
             }
         }
 
@@ -690,31 +701,31 @@ public class Main extends PApplet {
     }
 
     public void keyPressed(){ //PLAYER MOVEMENT
-        if (key == 'w' || key == 'W') { //REMOVED VERTICAL MOVEMENT
+        if (key == 'w' || key == 'W' || keyCode == UP) { //REMOVED VERTICAL MOVEMENT
             up = true;
         }
-        if (key == 'a' || key == 'A') {
+        if (key == 'a' || key == 'A' || keyCode == LEFT) {
             left = true;
         }
-        if (key == 's' || key == 'S') { //REMOVED VERTICAL MOVEMENT
+        if (key == 's' || key == 'S' || keyCode == DOWN) { //REMOVED VERTICAL MOVEMENT
             down = true;
         }
-        if (key == 'd' || key == 'D') {
+        if (key == 'd' || key == 'D' || keyCode == RIGHT) {
             right = true;
         }
     }
 
     public void keyReleased(){ //PLAYER MOVEMENT
-        if (key == 'w' || key == 'W') {
+        if (key == 'w' || key == 'W' || keyCode == UP) {
             up=false;
         }
-        if (key == 'a' || key == 'A') {
+        if (key == 'a' || key == 'A' || keyCode == LEFT) {
             left=false;
         }
-        if (key == 's' || key == 'S') {
+        if (key == 's' || key == 'S' || keyCode == DOWN) {
             down=false;
         }
-        if (key == 'd' || key == 'D') {
+        if (key == 'd' || key == 'D' || keyCode == RIGHT) {
             right=false;
         }
     }
@@ -723,29 +734,29 @@ public class Main extends PApplet {
         playerShoot.play();
         playerShoot.rewind();
         pBullet pb = new pBullet(px + 16, py, 10, 8,20,1);
-        pBullet.add(pb);
-        pb = new pBullet(px + 48, py, 10, 8,20,1);
-        pBullet.add(pb);
-        pBulletTimer =5; //BULLET INTERVAL
+        pBulletList.add(pb);
+        pb = new pBullet(px + 48, py, 10, 8,14,1);
+        pBulletList.add(pb);
+        pBulletTimer = 5; //BULLET INTERVAL
     }
     public void shootPBullet2(){ //PLAYER FIRE
         playerShoot2.play();
         playerShoot2.rewind();
-        pBullet pb = new pBullet(px + pw / 2, py + 1, 10, 8,14,2);
-        pBullet.add(pb);
-        pBulletTimer2 =20; //BULLET INTERVAL
+        pBullet pb = new pBullet(px + pw / 2, py + 1, 10, 8,20,2);
+        pBulletList.add(pb);
+        pBulletTimer2 = 20; //BULLET INTERVAL
     }
 
 
     public void shootEBullet(){ //ENEMY FIRE 1: SPREAD
         eBullet eb = new eBullet(ex + ew / 2 - 5, ey + eh - 10, ebxs, ebys,0,1);
-        eBullet.add(eb);
+        eBulletList.add(eb);
         eBulletTimer=4;
     }
 
     public void shootEBullet2(){ //ENEMY FIRE 2: SPRAY N' PRAY
         eBullet eb = new eBullet(ex + ew / 2 - 5, ey + eh - 10, 0, 5,0,1);
-        eBullet.add(eb);
+        eBulletList.add(eb);
         eBulletTimer2 =2;
     }
 
@@ -763,7 +774,7 @@ public class Main extends PApplet {
         n = (x/y) * (y/45); // x/y -> x
 
         eBullet eb = new eBullet(rx, ry, (int) n, (int) l,0,1);
-        eBullet.add(eb);
+        eBulletList.add(eb);
     }
 
     public void enemyHP(){
@@ -813,11 +824,11 @@ public class Main extends PApplet {
             background(0);
             textSize(50);
             fill(0,255,0);
-            text("VICTORY", 200, 370);
+            text("VICTORY", 210, 370);
             textSize(25);
             fill(255);
-            text("Health remaining: "+Math.round(playerHealth),175,410);
-            if(playerHealth<10){
+            text("Health remaining: "+Math.round(playerHealth),180,410);
+            if(playerHealth<100){
                 textSize(15);
                 fill(255,255,0);
                 text("Close call!",380,430);
@@ -827,7 +838,7 @@ public class Main extends PApplet {
             background(0);
             textSize(50);
             fill(255,0,0);
-            text("DEFEAT", 210, 370);
+            text("DEFEAT", 220, 370);
         }
     }
 

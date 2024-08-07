@@ -49,7 +49,7 @@ There are no plans to work on this project.
 There are no plans to work on this project.
 
 ## ⚖️ License
-Distributed under the **GNU License**. See `A_Plane/LICENSE.txt` for more information.
+Distributed under the **GPL-3.0 License**. See [LICENSE](https://github.com/deantumabcaofhs/A_Plane/blob/master/LICENSE) for more information.
 
 ## 📞 Contact
 

@@ -31,7 +31,9 @@ Not affiliated with Helldivers 2.
 
 
 ## 🎬 Trailer
-https://github.com/user-attachments/assets/8c5f04b5-48fe-4679-b705-8a3567a86da1
+https://github.com/user-attachments/assets/3382d8fc-3c86-41ee-bc26-8d8a2ebb9603
+
+
 
 
 
